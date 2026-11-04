@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>function</title>
+  </head>
+  <body>
+    <form>
+      <h1>Simple Calculator</h1>
+      <label>Number 1</label><br>
+      <input type="number" id="number1" placeholder="Enter the number" required><br>
+      <label>Number 2</label><br>
+      <input type="number" id="number2" placeholder="Enter the number" required><br><br>
+      <button type="button" onclick="hitung('+')">+</button>
+      <button type="button" onclick="hitung('-')">-</button>
+      <button type="button" onclick="hitung('*')">*</button>
+      <button type="button" onclick="hitung('/')">/</button>
+      <p>Result : </p>
+      <p id="result">0</p>
+    </form>
+    <div id="app"></div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+  <script>
+    function hitung(operator){
+      let number1 = Number(document.getElementById("number1").value);
+      let number2 = Number(document.getElementById("number2").value);
+      let result;
+      if (operator == '+'){
+        result=number1+number2;
+      }
+      else if(operator == '-'){
+        result=number1-number2;
+      }
+      else if(operator == '*'){
+        result=number1*number2;
+      }
+      else if(operator == '/'){
+        if(number2===0){
+          document.getElementById("result").innerHTML="Cannot devided by zero";
+        }
+        else{
+          result=number1/number2;
+        }
+      }
+      else{
+        null;
+      }
+      return document.getElementById("result").innerHTML=result.toFixed(0);
+    }
+  </script>
+</html>
